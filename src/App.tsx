@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -33,7 +33,6 @@ type MemberFormValues = z.infer<typeof memberSchema>;
 const safeUUID = () => {
   try {
     // บางเครื่อง/HTTP อาจไม่มี randomUUID
-    // @ts-expect-error
     if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   } catch { }
   return `id_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
